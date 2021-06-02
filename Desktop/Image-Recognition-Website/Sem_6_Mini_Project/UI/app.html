@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bollywood Celebrity Classifier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./dropzone.min.css">
+    <link rel="stylesheet" href="./app.css">
+</head>
+
+<body>
+        <nav class="navbar navbar-dark bg-light justify-content-center" style="font-size: xx-large; font-weight:500; "><h1 class="navbar-title">Bollywood Celebrity Classifier</h1></nav>
+        <div class="display-wrapper">
+        <div class="display-card-wrapper">     
+            <div class="display-card">
+            <div class="display-front rounded-circle">
+                    <img class="image-1"  alt="Salman Khan"  type="image/png" src="./images/salman.jpg">
+            </div>
+            <div class="display-back rounded-circle">
+                <div class="display-back-content ">
+                    <h1 class="display-h1">Salman Khan</h1>
+                </div>
+            </div>
+            </div>
+        
+            <div class="display-card">
+            <div class="display-front rounded-circle">
+                    <img class="image-2" alt="Shahrukh Khan"  type="image/png" src="./images/sharukh.jpg" style="">
+            </div>
+            <div class="display-back rounded-circle">
+                <div class="display-back-content">
+                    <h1 class="display-h1">Sharukh Khan</h1>
+                </div>
+            </div>
+            </div>
+            <div class="display-card">
+            <div class="display-front rounded-circle">
+                    <img class="image-3" alt="Alia Bhatt"  type="image/png" src="./images/alia.jpg">
+            </div>
+            <div class="display-back rounded-circle">
+                <div class="display-back-content ">
+                    <h1 class="display-h1">Alia Bhatt</h1>
+                </div>
+            </div>
+            </div>
+            <div class="display-card">
+            <div class="display-front rounded-circle">
+                    <img class="image-4" alt="Deepika Padukone" type="image/png" src="./images/deepika.jpg">
+            </div>
+            <div class="display-back rounded-circle">
+                <div class="display-back-content ">
+                    <h1 class="display-h1">Deepika Padukone</h1>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <div class="col-12 mx-auto">
+                            <form action="/file-upload" class="dropzone" id="dropzone">
+                                <div class="dz-message needsclick">
+                                    <img src="./images/upload.png" width="50vw" height="50vw"><br>
+                                    <span class="note needsclick">Drop files here or click to upload</span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3 mx-auto">
+                            <button id="submitBtn" type="button" class="btn btn-outline-success" style="margin-bottom: 20px;">Classify</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-8 error" id="error" >
+                    <p>Can't classify image. Classifier was not able to detect face and two eyes properly</p>    
+                </div>
+                <div class="col-sm-4" id="resultHolder">
+                </div>
+                <div class="col-sm-4" id="divClassTable">
+                    <table id="classTable">
+                            <tr>
+                                <th>Celebrity</th>
+                                <th>Probability Score</th>
+                            </tr>
+                            <tr>
+                                <td>Shahrukh Khan</td>
+                                <td id="Shahrukh"></td>
+                            </tr>
+                            <tr>
+                                <td>Salman Khan</td>
+                                <td id="Salman"></td>
+                            </tr>
+                            <tr>
+                                <td>Alia Bhat</td>
+                                <td id="Alia"></td>
+                            </tr>
+                            <tr>
+                                <td>Deepika Padukone</td>
+                                <td id="Deepika"></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+      </div> 
+</body>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="./dropzone.min.js"></script>
+<script src="./app.js"></script>
+<script src="https://kit.fontawesome.com/6f7534ec59.js" crossorigin="anonymous"></script>
+</html>
