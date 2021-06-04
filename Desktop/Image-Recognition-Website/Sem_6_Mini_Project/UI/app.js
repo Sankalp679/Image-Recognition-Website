@@ -1,5 +1,4 @@
-// function myFunction(){
-    Dropzone.autoDiscover = false;
+Dropzone.autoDiscover = false;
 function init() {
     let dz = new Dropzone("#dropzone", {
         url: "/",
@@ -11,21 +10,21 @@ function init() {
     
     dz.on("addedfile", function() {
         if (dz.files[1]!=null) {
-            dz.removeFile(dz.files[0]);        
+            dz.removeFile(dz.files[0]);
         }
     });
 
     dz.on("complete", function (file) {
         let imageData = file.dataURL;
         
-        var url = "http://127.0.0.1:5000/classify_image";
+        var url = "http://127.0.0.1:5500/classify_image";
         // var url = "/api/classify_image";
-
+        console.log(imageData);
         $.post(url, {
             image_data: file.dataURL
         },function(data, status) {
             
-            /* 
+            /*
             Below is a sample response if you have two faces in an image lets say virat and roger together.
             Most of the time if there is one person in the image you will get only one element in below array
             data = [
@@ -57,7 +56,7 @@ function init() {
             console.log(data);
             if (!data || data.length==0) {
                 $("#resultHolder").hide();
-                $("#divClassTable").hide();                
+                $("#divClassTable").hide();
                 $("#error").show();
                 return;
             }
@@ -88,59 +87,59 @@ function init() {
                     $("#"+ res[0]).html(proabilityScore);
                 }
             }
-            // dz.removeFile(file);            
+            // dz.removeFile(file);
         });
     });
 
     $("#submitBtn").on('click', function (e) {
-        dz.processQueue();		
+        dz.processQueue();
     });
 }
 
 $(document).ready(function() {
     console.log( "ready!" );
+    const logo = document.querySelector(".navbar");
+
+    anime({
+        targets: ".display-wrapper",
+        delay:2100,
+        duration: 450,
+        easing: "easeInOutSine",
+        opacity: [0, 1],
+        translateY: [100, 0],
+    });
+
+    anime({
+    targets: ".display-card",
+    duration: 500,
+    delay: anime.stagger(450, { start: 2400 }),
+    easing: "easeInOutSine",
+    opacity: [0, 1],
+    translateY: [100, 0],
+    });
+
+    logo.innerHTML = logo.innerText
+    .split("")
+    .map((char) => {
+    return `<span>${char == " " ? "&nbsp;" : char}</span>`;
+    })
+    .join("");
+
+    var tl = anime.timeline({
+    easing: "easeOutExpo",
+    duration: 200,
+    });
+
+    tl.add({
+    targets: ".navbar span",
+    opacity: [0, 1],
+    translateY: [-20,0],
+    delay: (elem, index) => 100 + index * 50,
+    });
+
     $("#error").hide();
     $("#resultHolder").hide();
     $("#divClassTable").hide();
     init();
 });
 
-// const logo = document.querySelector(".navbar");
-
-// anime({
-//     targets: ".display-wrapper",
-//     delay:2100,
-//     duration: 450,
-//     easing: "easeInOutSine",
-//     opacity: [0, 1],
-//     translateY: [100, 0],
-//   });
-
-// anime({
-// targets: ".display-card",
-// duration: 500,
-// delay: anime.stagger(450, { start: 2400 }),
-// easing: "easeInOutSine",
-// opacity: [0, 1],
-// translateY: [100, 0],
-// });
-
-// logo.innerHTML = logo.innerText
-// .split("")
-// .map((char) => {
-//   return `<span>${char == " " ? "&nbsp;" : char}</span>`;
-// })
-// .join("");
-
-// var tl = anime.timeline({
-// easing: "easeOutExpo",
-// duration: 200,
-// });
-
-// tl.add({
-// targets: ".navbar span",
-// opacity: [0, 1],
-// translateY: [-20,0],
-// delay: (elem, index) => 100 + index * 50,
-// });
-// }
